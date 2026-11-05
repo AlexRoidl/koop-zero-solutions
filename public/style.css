@@ -156,11 +156,33 @@ canvas#board {
 .ov-wrap { max-width: 1200px; margin: 0 auto; padding: 16px 16px 80px; }
 .grid { columns: 240px; column-gap: 14px; }
 .card {
-  display: block; break-inside: avoid; margin: 0 0 14px;
+  position: relative; break-inside: avoid; margin: 0 0 14px;
   border: 1px solid var(--ink); background: #fff; line-height: 0;
 }
+.card a { display: block; }
 .card img { display: block; width: 100%; height: auto; background: #fff; }
 .empty { text-align: center; color: var(--muted); padding: 80px 20px; font-size: 15px; }
+
+/* faint toggle dot for the hidden delete mode */
+.del-toggle {
+  width: 14px; height: 14px; padding: 0; border-radius: 50%;
+  background: var(--ink); opacity: .1; cursor: pointer; flex: 0 0 auto;
+  transition: opacity .15s, background .15s;
+}
+.del-toggle:hover { opacity: .35; }
+body.del-mode .del-toggle { opacity: 1; background: var(--err); }
+
+/* per-card delete button — shown ONLY while the hidden delete mode is on */
+.card .del {
+  position: absolute; top: 6px; right: 6px;
+  width: 30px; height: 30px; padding: 0;
+  display: flex; align-items: center; justify-content: center;
+  font: 700 20px/1 var(--font);
+  background: var(--ink); color: #fff; border: 2px solid #fff;
+  opacity: 0; pointer-events: none; transition: opacity .12s;
+}
+body.del-mode .card .del { opacity: 1; pointer-events: auto; }
+.card .del:hover { background: var(--err); }
 .empty a { color: var(--ink); font-weight: 700; }
 .hidden { display: none !important; }
 
