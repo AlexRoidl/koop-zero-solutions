@@ -44,13 +44,22 @@ Uploading needs your Signal account's `user` + `password`, read from a linked
 
 ## 3. Upload the pack
 
+Put your credentials in a **`.env` file** so nothing secret appears on the
+command line. Copy the template and fill it in:
+
 ```bash
-SIGNAL_USER='the-uuid-value' SIGNAL_PASSWORD='the-password-value' \
-  ./run.sh --title "Koop Memes" --author "Symposium Kooperation"
+cp .env.example .env
+# then edit .env and set SIGNAL_USER / SIGNAL_PASSWORD
 ```
 
-Tip: put a **leading space** before the command so the secrets don't land in your
-shell history, or `export` them in a throwaway terminal.
+`.env` is git-ignored and stays only on your machine. Then just run:
+
+```bash
+./run.sh --title "Koop Memes" --author "Symposium Kooperation"
+```
+
+`run.sh` loads `.env` automatically. (Env vars set directly in the shell still
+override `.env` if you prefer that.)
 
 On success it prints:
 

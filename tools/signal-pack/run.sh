@@ -1,10 +1,24 @@
 #!/usr/bin/env bash
 # Set up a local virtualenv and run the Signal pack builder.
 # Usage:
-#   ./run.sh --dry-run --out out                 # just build the .webp files
-#   SIGNAL_USER=xxx SIGNAL_PASSWORD=yyy ./run.sh  # build AND upload to Signal
+#   ./run.sh --dry-run --out out      # just build the .webp files (no credentials)
+#   ./run.sh                          # build AND upload (reads creds from .env, see below)
+#
+# Credentials: create a .env file next to this script (copy .env.example) with
+#   SIGNAL_USER=...
+#   SIGNAL_PASSWORD=...
+# and run.sh loads it automatically — nothing secret on the command line.
+# (Env vars you set in the shell still take precedence over .env.)
 set -euo pipefail
 cd "$(dirname "$0")"
+
+# Load credentials from a local .env file if present.
+if [ -f .env ]; then
+  set -a
+  # shellcheck disable=SC1091
+  . ./.env
+  set +a
+fi
 
 PY="${PYTHON:-python3}"
 if [ ! -d .venv ]; then

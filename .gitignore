@@ -5,3 +5,4 @@ data
 scratchpad
 tools/signal-pack/.venv
 tools/signal-pack/out
+tools/signal-pack/.env
