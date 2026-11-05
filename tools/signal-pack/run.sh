@@ -30,8 +30,9 @@ fi
 
 pip -q install --upgrade pip >/dev/null
 # Install deps, then force a modern httpx/httpcore. signalstickers-client pins an
-# old httpx that won't build on Python 3.13+/3.14; the newer one is API-compatible.
-pip -q install "signalstickers-client==3.3.0" "Pillow>=10"
-pip -q install --upgrade "httpx>=0.28" "httpcore>=1.0.9"
+# old httpx that won't build on Python 3.13+/3.14; the newer one is API-compatible,
+# so --no-warn-conflicts silences pip's (harmless) version-pin complaint.
+pip -q --no-warn-conflicts install "signalstickers-client==3.3.0" "Pillow>=10"
+pip -q --no-warn-conflicts install --upgrade "httpx>=0.28" "httpcore>=1.0.9"
 
 exec python make_signal_pack.py "$@"
