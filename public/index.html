@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Meme Generator</title>
+<link rel="preload" href="/fonts/Anton.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <h1><span class="logo">MEME</span> <span class="label">Generator</span></h1>
+    <div class="spacer"></div>
+    <a class="nav-link" href="/overview">Overview →</a>
+  </header>
+
+  <main class="stage" id="stage-area">
+    <div class="canvas-wrap" id="canvas-wrap">
+      <canvas id="stage" width="600" height="600"></canvas>
+    </div>
+    <div class="stage-hint" id="hint">Tippe auf einen Text zum Auswählen · ziehen = bewegen · Ecke = skalieren</div>
+  </main>
+
+  <div class="toolbar">
+    <div class="layer-editor" id="layer-editor">
+      <textarea id="layer-text" rows="2" placeholder="Dein Text…" spellcheck="false"></textarea>
+      <div class="le-side">
+        <button class="icon" id="btn-invert" title="Schwarz/Weiß tauschen">🔁</button>
+        <button class="icon danger" id="btn-del" title="Text löschen">🗑️</button>
+      </div>
+    </div>
+    <div class="row main">
+      <button id="btn-random" title="Neues Zufallsbild">🎲 <span>Neues Bild</span></button>
+      <button id="btn-add-text">➕ <span>Text</span></button>
+      <button id="btn-save" class="primary">💾 <span>Speichern</span></button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "koop-meme-tool",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Meme generator — random base image + Impact-style captions, saved to a shared /overview gallery",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
