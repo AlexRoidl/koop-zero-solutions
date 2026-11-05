@@ -153,32 +153,13 @@ canvas#board {
 }
 .topbar .brand { height: 44px; }
 .topbar .spacer { flex: 1; }
-.ov-wrap { max-width: 1200px; margin: 0 auto; padding: 24px 16px 80px; }
-.ov-head {
-  display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;
-}
-.ov-head h1 {
-  margin: 0; font: 700 24px var(--font); text-transform: uppercase; letter-spacing: 1px;
-}
-.ov-count { color: var(--muted); font-size: 14px; }
+.ov-wrap { max-width: 1200px; margin: 0 auto; padding: 16px 16px 80px; }
 .grid { columns: 240px; column-gap: 14px; }
 .card {
-  break-inside: avoid; margin: 0 0 14px;
-  border: 1px solid var(--ink); background: #fff; position: relative;
+  display: block; break-inside: avoid; margin: 0 0 14px;
+  border: 1px solid var(--ink); background: #fff; line-height: 0;
 }
 .card img { display: block; width: 100%; height: auto; background: #fff; }
-.card .card-bar {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 7px 10px; font-size: 12px; color: var(--muted);
-  border-top: 1px solid var(--ink);
-}
-.card .card-actions { display: flex; gap: 6px; }
-.card .card-actions a, .card .card-actions button {
-  padding: 5px 9px; font-size: 13px; height: auto;
-  background: var(--ink); color: #fff;
-}
-.card .card-actions a:hover { background: #3a0f24; }
-.card .card-actions .danger { background: var(--err); }
 .empty { text-align: center; color: var(--muted); padding: 80px 20px; font-size: 15px; }
 .empty a { color: var(--ink); font-weight: 700; }
 .hidden { display: none !important; }
