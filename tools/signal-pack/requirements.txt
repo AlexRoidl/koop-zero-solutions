@@ -1,0 +1,6 @@
+# The Signal client pins an old httpx that fails to build on Python 3.13/3.14,
+# so run.sh installs these and then force-upgrades httpx/httpcore (API-compatible).
+signalstickers-client==3.3.0
+Pillow>=10
+httpx>=0.28
+httpcore>=1.0.9

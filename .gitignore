@@ -3,3 +3,5 @@ node_modules
 .DS_Store
 data
 scratchpad
+tools/signal-pack/.venv
+tools/signal-pack/out
