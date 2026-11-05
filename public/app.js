@@ -12,12 +12,11 @@ const STROKE_RATIO = 0.14;    // outline width relative to font size
 const HANDLE_R = 13;          // handle radius in *screen* px
 const MIN_SIZE = 14;
 
-const canvas = document.getElementById('stage');
+const canvas = document.getElementById('board');
 const ctx = canvas.getContext('2d');
-const wrap = document.getElementById('canvas-wrap');
 const hint = document.getElementById('hint');
 
-const editorBar = document.getElementById('layer-editor');
+const editorBar = document.getElementById('imgbar');
 const textInput = document.getElementById('layer-text');
 
 let baseImages = [];
@@ -114,7 +113,7 @@ function drawSelection(l) {
   ctx.save();
   ctx.translate(l.cx, l.cy);
   ctx.rotate(l.rot);
-  ctx.strokeStyle = '#ffcc00';
+  ctx.strokeStyle = '#200010';
   ctx.lineWidth = 1.5 / vs;
   ctx.setLineDash([6 / vs, 5 / vs]);
   ctx.strokeRect(-m.hw, -m.hh, m.hw * 2, m.hh * 2);
@@ -126,25 +125,25 @@ function drawSelection(l) {
   ctx.stroke();
   ctx.restore();
 
-  const dot = (p, fill, glyph) => {
+  const dot = (p, fill, glyph, ink) => {
     ctx.beginPath();
     ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
     ctx.fillStyle = fill;
     ctx.fill();
     ctx.lineWidth = 2 / vs;
-    ctx.strokeStyle = '#fff';
+    ctx.strokeStyle = ink ? '#fff' : '#200010';
     ctx.stroke();
     if (glyph) {
-      ctx.fillStyle = '#fff';
+      ctx.fillStyle = ink ? '#fff' : '#200010';
       ctx.font = `${r * 1.3}px sans-serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(glyph, p.x, p.y + r * 0.05);
     }
   };
-  dot(pts.rotate, '#2b78ff', '⟳');
-  dot(pts.scale, '#ffcc00', '⤡');
-  dot(pts.del, '#ff4d4d', '×');
+  dot(pts.rotate, '#200010', '⟳', true);
+  dot(pts.scale, '#dfffef', '⤡', false);
+  dot(pts.del, '#ff5a3c', '×', true);
 }
 
 function render() {
